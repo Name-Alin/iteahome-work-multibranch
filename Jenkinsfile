@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                withMaven(maven: 'maven3'){
+                    sh "mvn clean verify -DskipTests"
+                }
             }
         }
         stage('Test') {
